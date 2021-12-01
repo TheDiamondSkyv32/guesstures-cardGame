@@ -1,0 +1,24 @@
+.grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+}
+
+.buttons{
+    padding: 10px;
+    border-radius: 10%;
+    color: black;
+}
+
+#greenButton{
+    background-color: green;
+}
+
+#redButton{
+    background-color: rgba(255, 0, 0, 0.74);
+}
+
+#blueButton{
+    background-color: rgba(10, 25, 231, 0.966);
+}
