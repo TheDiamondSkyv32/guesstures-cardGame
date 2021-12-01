@@ -5,10 +5,17 @@ function createTeam(){
     var teamObject = document.createElement("h2");
     var teamPoints = document.createElement("h3");
 
+    teamObject.setAttribute("class", "grid");
+    teamPoints.setAttribute("class", "grid");
+
     var redButton = document.createElement("button");
     var blueButton = document.createElement("button");
     var greenButton = document.createElement("button");
   
+    redButton.setAttribute("id", "redButton");
+    blueButton.setAttribute("id", "blueButton");
+    greenButton.setAttribute("id", "greenButton");
+    
     redButton.innerText = "RED";
     blueButton.innerText = "BLUE";
     greenButton.innerText = "GREEN";
@@ -20,6 +27,7 @@ function createTeam(){
     var listButtons = [greenButton, blueButton, redButton];
     listButtons.forEach(element => {
         element.type = "button";
+        element.setAttribute("class", "buttons");
     });
 
     teamPoints.value = 0;
@@ -31,7 +39,7 @@ function createTeam(){
     teamPoints.appendChild(greenButton);
     teamPoints.appendChild(blueButton);
     teamPoints.appendChild(redButton);
-    
+
     document.body.appendChild(teamObject); // Makes team appear on-page
 
 }
