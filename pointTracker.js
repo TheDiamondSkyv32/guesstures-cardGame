@@ -2,75 +2,73 @@
 
 // Create Team and relevant elements
 function createTeam(){
-    var pointValue = 0;
     var teamObject = document.createElement("h2");
     var teamPoints = document.createElement("h3");
+
+    teamObject.setAttribute("class", "grid");
+    teamPoints.setAttribute("class", "grid");
 
     var redButton = document.createElement("button");
     var blueButton = document.createElement("button");
     var greenButton = document.createElement("button");
   
+    redButton.setAttribute("id", "redButton");
+    blueButton.setAttribute("id", "blueButton");
+    greenButton.setAttribute("id", "greenButton");
+    
     redButton.innerText = "RED";
     blueButton.innerText = "BLUE";
     greenButton.innerText = "GREEN";
 
-    redButton.addEventListener("click", function(e){
-        e.preventDefault();
-        increaseRed(this);
-        alert(this.type);
-
-        return false;
-    });
+    redButton.addEventListener("click", increaseRed);
     blueButton.addEventListener("click", increaseBlue);
     greenButton.addEventListener("click", increaseGreen);
 
-    var listButtons = [redButton, blueButton, greenButton];
+    var listButtons = [greenButton, blueButton, redButton];
     listButtons.forEach(element => {
         element.type = "button";
+        element.setAttribute("class", "buttons");
     });
 
-    
-    teamPoints.value = pointValue;
+    teamPoints.value = 0;
     teamPoints.innerHTML = teamPoints.value;
-    teamPoints.setAttribute("id", "points");
-
 
     var teamID = document.getElementById("teamName").value;
     teamObject.innerHTML = teamID;
     teamObject.appendChild(teamPoints);
-
     teamPoints.appendChild(greenButton);
     teamPoints.appendChild(blueButton);
     teamPoints.appendChild(redButton);
-
-
 
     document.body.appendChild(teamObject); // Makes team appear on-page
 
 }
 
-function increaseRed(e){
-    alert(e.type);
-    alert(e);
-    alert(e.parentNode);
-    alert(e.parentNode.value);
-    var updatedPoints = e.parentNode.value + 3;
-    e.parentNode.textContent = updatedPoints;
-    // var x = this.parentNode
-    // alert(x);
-    // alert(this);
-    
-    // alert(this.parentNode.innerHTML);
-    // alert(this.type);
-    // var updatedPoints = this.parentNode.value += 3;
-    // this.parentNode.innerText = updatedPoints;
-    //alert(this.parentNode.value);
+
+// increase team points by three
+function increaseRed(){
+
+    this.parentNode.value += 3;
+    var newPoints = this.parentNode.value;
+    var oldPointNode = this.parentNode;
+    var pointUpdate = oldPointNode.childNodes[0];
+    pointUpdate.nodeValue = newPoints;
 }
 
+// increase team points by two
 function increaseBlue(){
-    this.pointValue += 2;
+    this.parentNode.value += 2;
+    var newPoints = this.parentNode.value;
+    var oldPointNode = this.parentNode;
+    var pointUpdate = oldPointNode.childNodes[0];
+    pointUpdate.nodeValue = newPoints;
 }
 
+// increase team points by one
 function increaseGreen(){
-    this.pointValue += 1;
+    this.parentNode.value += 1;
+    var newPoints = this.parentNode.value;
+    var oldPointNode = this.parentNode;
+    var pointUpdate = oldPointNode.childNodes[0];
+    pointUpdate.nodeValue = newPoints;
 }
